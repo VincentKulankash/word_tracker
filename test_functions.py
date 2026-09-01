@@ -38,8 +38,6 @@ def test_count_specific_word():
 
     print('\n ALL TESTS PASSED!\n')
 
-if __name__ == '__main__':
-    test_count_specific_word()
 
 
 def test_identify_most_common_word():
@@ -80,8 +78,6 @@ def test_identify_most_common_word():
 
     print('\n ALL TESTS PASSED!\n')
 
-if __name__ == '__main__':
-    test_identify_most_common_word()
 
 def test_calculate_average_word_length():
     print('Testing the average word length in a given text.')
@@ -122,8 +118,54 @@ def test_calculate_average_word_length():
 
     print('\n ALL TESTS PASSED!\n')
 
+def test_count_paragraphs():
+    print("TESTING: count_paragraphs")
+
+    print("\n Test 1: Single paragraph")
+    text = "This is a single paragraph."
+    result = pythonAssessment.count_paragraphs(text)
+    print(f"  Expected: 1, Got: {result}")
+    assert result == 1, "Test 1 failed!"
+
+    print("\n Test 2: Two paragraphs")
+    text = "First paragraph.\n\nSecond paragraph."
+    result = pythonAssessment.count_paragraphs(text)
+    print(f"  Expected: 2, Got: {result}")
+    assert result == 2, "Test 2 failed!"
+
+    print("\n Test 3: Three paragraphs")
+    text = "First.\n\nSecond.\n\nThird."
+    result = pythonAssessment.count_paragraphs(text)
+    print(f"  Expected: 3, Got: {result}")
+    assert result == 3, "Test 3 failed!"
+
+    print("\n Test 4: With whitespace in empty lines")
+    text = "First paragraph.\n\n   \n\nSecond paragraph."
+    result = pythonAssessment.count_paragraphs(text)
+    print(f"  Expected: 2, Got: {result}")
+    assert result == 2, "Test 4 failed!"
+
+    print("\n Test 5: Empty string")
+    result = pythonAssessment.count_paragraphs("")
+    print(f"  Expected: 1, Got: {result}")
+    assert result == 1, "Test 5 failed!"
+
+    print("\n Test 6: String with only whitespace")
+    result = pythonAssessment.count_paragraphs("   \n   \n   ")
+    print(f"  Expected: 1, Got: {result}")
+    assert result == 1, "Test 6 failed!"
+
+    print('\n All tests passed!\n')
+
+
 if __name__ == '__main__':
     test_calculate_average_word_length()
+    test_identify_most_common_word()
+    test_count_specific_word()
+    test_count_paragraphs()
+    
+
+
 
 
 

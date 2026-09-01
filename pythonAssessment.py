@@ -52,4 +52,22 @@ def calculate_average_word_length(text):
     print(f'Average word length: {average_length:.2f}')
     return average_length
 
+def count_paragraphs(text):
+    if not text:
+        print('Number of paragraphs: 1')
+        return 1
+
+    paragraphs = text.split('\n\n')
+    paragraphs = [p for p in paragraphs if p.strip()]
+
+    count = len(paragraphs)
+
+    if count == 0:
+        count = 1
+
+    print(f"Number of paragraphs: {count}")
+    return count
+
+
+
     
