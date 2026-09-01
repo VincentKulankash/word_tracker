@@ -69,5 +69,95 @@ def count_paragraphs(text):
     return count
 
 
+def count_sentences(text):
+    if not text or not text.strip():
+        print("Sentence: analysis 1")
+        return 1
+
+    abbreviations = r'\b(Mr|Mrs|Ms|Dr|Prof|Sr|Jr|Inc|Ltd|Corp|Co|etc|vs|Fig|Dept|Approx|Misc)\.'
+    
+    protected = re.sub(abbreviations, r'\1<DOT>', text)
+    
+    sentences = re.split(r'[.!?]+(?:\s+|$)', protected)
+    sentences = [s for s in sentences if s.strip()]
+
+    count = len(sentences)
+    count = count if count > 0 else 1
+    
+    print(f"sentence: analysis {count}") 
+    return count
+ 
+
+
+if __name__ == '__main__':
+    print(" NEWS ARTICLE TEXT ANALYSIS")
+    filename = "ACME Inc. Unveils Revolutionary Apple Pie Machine,.txt"
+
+    try:
+        with open(filename, 'r', encoding='utf-8') as file:
+            article_text = file.read()
+        print(f"\n Successfully loaded: {filename}")
+    except FileNotFoundError:
+        print(f"\n Error: File '{filename}' not found!")
+        print("Please make sure the file is in the current directory.")
+        print(f"Current directory: {__import__('os').getcwd()}")
+        exit(1)
+    
+    while True:
+        print(" TEXT ANALYSIS MENU")
+        
+        print("1. Count specific word")
+        print("2. Find most common word")
+        print("3. Calculate average word length")
+        print("4. Count paragraphs")
+        print("5. Count sentences")
+        print("6. Run all analyses")
+        print("0. Exit")
+        
+        
+        choice = input("Enter your choice (0-6): ").strip()
+        
+
+        if choice == '0':
+            print("\n Goodbye!")
+            break
+        elif choice == '1':
+            word = input("Enter word to count: ").strip()
+            if word:
+                count_specific_word(article_text, word)
+            else:
+                print(" Please enter a valid word.")
+        elif choice == '2':
+            identify_most_common_word(article_text)
+        elif choice == '3':
+            calculate_average_word_length(article_text)
+        elif choice == '4':
+            count_paragraphs(article_text)
+        elif choice == '5':
+            count_sentences(article_text)
+        elif choice == '6':
+            print(" COMPLETE ANALYSIS")
+            
+            analyses = [
+                ("Specific Word Count ('apple')", lambda: count_specific_word(article_text, "apple")),
+                ("Most Common Word", lambda: identify_most_common_word(article_text)),
+                ("Average Word Length", lambda: calculate_average_word_length(article_text)),
+                ("Paragraph Count", lambda: count_paragraphs(article_text)),
+                ("Sentence Count", lambda: count_sentences(article_text))
+            ]
+            
+            for name, func in analyses:
+                print(f"\n {name}:")
+                func()
+            
+
+        else:
+            print(" Invalid choice. Please enter a number between 0 and 6.")
+    
+    print(" PROGRAM COMPLETE")
+
+
+
+
 
     

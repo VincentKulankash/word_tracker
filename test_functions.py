@@ -158,12 +158,56 @@ def test_count_paragraphs():
     print('\n All tests passed!\n')
 
 
+def test_count_sentences():
+    print("TESTING: count_sentences")
+
+    print("\n Test 1: Basic sentences")
+    text = "Hello world. How are you? I'm fine!"
+    result = pythonAssessment.count_sentences(text)
+    print(f"  Expected: 3, Got: {result}")
+    assert result == 3, "Test 1 failed!"
+
+    print("\n Test 2: Single sentence")
+    text = "This is one sentence."
+    result = pythonAssessment.count_sentences(text)
+    print(f"  Expected: 1, Got: {result}")
+    assert result == 1, "Test 2 failed!"
+
+    print("\n Test 3: Question marks")
+    text = "Is this a question? Yes it is. Are you sure? Absolutely."
+    result = pythonAssessment.count_sentences(text)
+    print(f"  Expected: 4, Got: {result}")
+    assert result == 4, "Test 3 failed!"
+
+    print("\n Test 4: Exclamation marks")
+    text = "Wow! Amazing! Incredible!"
+    result = pythonAssessment.count_sentences(text)
+    print(f"  Expected: 3, Got: {result}")
+    assert result == 3, "Test 4 failed!"
+
+    print("\n Test 5: Abbreviations")
+    text = "ACME Inc. is a company. Dr. Smith works there."
+    result = pythonAssessment.count_sentences(text)
+    print(f"  Expected: 2, Got: {result}")
+    assert result == 2, "Test 5 failed!"
+
+    print("\n Test 6: Empty string")
+    result = pythonAssessment.count_sentences("")
+    print(f"  Expected: 1, Got: {result}")
+    assert result == 1, "Test 6 failed!"
+
+    print('\n ALL TESTS PASSED!\n')
+
+
+
 if __name__ == '__main__':
     test_calculate_average_word_length()
     test_identify_most_common_word()
     test_count_specific_word()
     test_count_paragraphs()
+    test_count_sentences()
     
+
 
 
 
