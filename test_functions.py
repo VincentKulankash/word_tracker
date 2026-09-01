@@ -83,6 +83,50 @@ def test_identify_most_common_word():
 if __name__ == '__main__':
     test_identify_most_common_word()
 
+def test_calculate_average_word_length():
+    print('Testing the average word length in a given text.')
+
+    print('\n Test 1: Basic test with sentence')
+    text = 'The quick brown fox jumps over the lazy dog'
+    result = pythonAssessment.calculate_average_word_length(text)
+    print(f'Expected: 3.89, Got: {result:.2f}')
+    assert round(result, 2) == 3.89, 'Test 1 failed!'
+
+    print("\n Test 2: With punctuation")
+    text = "Hello, world! This is a test."
+    result = pythonAssessment.calculate_average_word_length(text)
+    print(f"  Expected: 3.50, Got: {result:.2f}")
+    assert round(result, 2) == 3.50, "Test 2 failed!"
+
+    print("\n Test 3: With numbers")
+    text = "Python 3.9 is great"
+    result = pythonAssessment.calculate_average_word_length(text)
+    print(f"  Expected: 3.00, Got: {result:.2f}")
+    assert round(result, 2) == 3.00, "Test 3 failed!"
+
+    print("\n Test 4: Special characters only")
+    text = "!@#$%^&*()"
+    result = pythonAssessment.calculate_average_word_length(text)
+    print(f"  Expected: 0.00, Got: {result:.2f}")
+    assert round(result, 2) == 0.00, "Test 4 failed!"
+
+    print("\n Test 5: Empty string")
+    result = pythonAssessment.calculate_average_word_length("")
+    print(f"  Expected: 0.00, Got: {result:.2f}")
+    assert round(result, 2) == 0.00, "Test 5 failed!"
+
+    print("\n Test 6: String with spaces only")
+    result = pythonAssessment.calculate_average_word_length("   ")
+    print(f"  Expected: 0.00, Got: {result:.2f}")
+    assert round(result, 2) == 0.00, "Test 6 failed!"
+
+    print('\n ALL TESTS PASSED!\n')
+
+if __name__ == '__main__':
+    test_calculate_average_word_length()
+
+
+
 
      
 

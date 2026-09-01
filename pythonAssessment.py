@@ -35,4 +35,21 @@ def identify_most_common_word(text):
     return most_common
 
 
+def calculate_average_word_length(text):
+    if not text or not text.strip():
+        print('Average word length: 0.0')
+        return 0.0
+
+    words = re.findall(r'[a-zA-Z0-9\']+', text)
+
+    if not words:
+        print('Average word length: 0.0')
+        return 0.0
+
+    total_length = sum(len(word) for word in words)
+    average_length = total_length / len(words)
+
+    print(f'Average word length: {average_length:.2f}')
+    return average_length
+
     
